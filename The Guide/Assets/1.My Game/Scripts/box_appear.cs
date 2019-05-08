@@ -6,6 +6,7 @@ public class box_appear : MonoBehaviour
 {
     public AudioSource bird;
     public GameObject platform;
+    public Animator ring;
     public bool shot;
     void Start()
     {
@@ -15,6 +16,7 @@ public class box_appear : MonoBehaviour
         }
 
         bird = GetComponent<AudioSource>();
+        ring = GameObject.FindGameObjectWithTag("ring").GetComponent<Animator>();
 
     }
 
@@ -23,8 +25,8 @@ public class box_appear : MonoBehaviour
         if(other.tag == "light_orb")
         {
             platform.SetActive(true);
-            shot = true;
             Destroy(other);
+            shot = true;
 
             platform.GetComponent<Animator>().SetBool("shot_at", true);
         }
@@ -33,13 +35,13 @@ public class box_appear : MonoBehaviour
     void OnMouseEnter()
     {
         bird.Play();
-        bird.UnPause();
+        ring.SetBool("seen", true);
 
     }
 
     void OnMouseExit()
     {
-        bird.Pause();
+        ring.SetBool("seen", false);
     }
 
 }

@@ -155,6 +155,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bird: {fileID: 0}
   platform: {fileID: 5709748463728443340}
+  ring: {fileID: 2926868364421562162, guid: 54c4069a3ef165f49b8f3153c7b754fa, type: 3}
   shot: 0
 --- !u!64 &558775748224379541
 MeshCollider:

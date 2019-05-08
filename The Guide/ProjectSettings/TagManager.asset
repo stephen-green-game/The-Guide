@@ -11,6 +11,7 @@ TagManager:
   - plat2
   - plat3
   - plat
+  - ring
   layers:
   - Default
   - TransparentFX
