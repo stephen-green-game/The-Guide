@@ -40,6 +40,10 @@ public class light_orb : MonoBehaviour
 
         energy_bar.fillAmount = curent_energy;
 
+        if (curent_energy > max_energy)
+        {
+            curent_energy = max_energy;
+        }
     }
 
 
@@ -59,15 +63,7 @@ public class light_orb : MonoBehaviour
     }
 
 
-     void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "Energy")
-        {
-            curent_energy = curent_energy + 0.1f;
-        }
-
-        Destroy(other);
-    }
+  
 
 
 

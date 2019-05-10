@@ -8,6 +8,7 @@ public class box_appear : MonoBehaviour
     public GameObject platform;
     public Animator ring;
     public bool shot;
+
     void Start()
     {
         if (platform.tag == "plat")
@@ -25,7 +26,7 @@ public class box_appear : MonoBehaviour
         if(other.tag == "light_orb")
         {
             platform.SetActive(true);
-            Destroy(other);
+            
             shot = true;
 
             platform.GetComponent<Animator>().SetBool("shot_at", true);
@@ -34,8 +35,11 @@ public class box_appear : MonoBehaviour
 
     void OnMouseEnter()
     {
-        bird.Play();
-        ring.SetBool("seen", true);
+        if (shot == false)
+        {
+            bird.Play();
+            ring.SetBool("seen", true);
+        }
 
     }
 

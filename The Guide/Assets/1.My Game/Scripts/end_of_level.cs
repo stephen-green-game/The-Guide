@@ -7,22 +7,41 @@ public class end_of_level : MonoBehaviour {
 
     public Transform Destination;
 
-    public new Vector3 dest;
+    private bool player_fallen;
+
+    private Transform player;
+
 
     private void Start()
     {
-        dest = Destination.position;
+        player = GameObject.FindGameObjectWithTag("Player").transform;
     }
+
+
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Player")
-        {
-            other.transform.position = dest;
+    if (other.tag == "Player")
+    {
+    StartCoroutine(teleport());
+    }
 
+    }
+
+    private void FixedUpdate()
+    {
+        if(player_fallen)
+        {
+            player.position = Destination.position;
         }
     }
 
+    IEnumerator teleport()
+    {
+        player_fallen = true;
+        yield return new WaitForSeconds(0.1f);
+        player_fallen = false;
+    }
 
 
 }

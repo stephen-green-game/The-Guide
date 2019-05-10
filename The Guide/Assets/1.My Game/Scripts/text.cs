@@ -4,14 +4,30 @@ using UnityEngine;
 
 public class text : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public GameObject _text;
+
     void Start()
     {
-        StartCoroutine(destroy());
+        _text.SetActive(false);
     }
 
-   IEnumerator destroy()
+
+    private void OnTriggerEnter(Collider other)
     {
+        if (other.tag == "Player")
+        {
+            StartCoroutine(destroy());
+        }
+    }
+
+
+
+    IEnumerator destroy()
+    {
+        yield return new WaitForSeconds(5);
+
+        _text.SetActive(true);
+
         yield return new WaitForSeconds(5);
 
         Destroy(gameObject);

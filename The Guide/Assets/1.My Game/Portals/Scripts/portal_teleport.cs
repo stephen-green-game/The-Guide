@@ -14,10 +14,12 @@ public class portal_teleport : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player").transform;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         if (player_in_portal)
         {
+            //player.position = destination.position;
+
             Vector3 portal_to_player = player.position - transform.position;
             float dot_product = Vector3.Dot(transform.up, portal_to_player);
 
@@ -34,6 +36,8 @@ public class portal_teleport : MonoBehaviour
 
                 player_in_portal = false;
             }
+
+
         }
     }
 
@@ -41,16 +45,27 @@ public class portal_teleport : MonoBehaviour
     {
         if (other.tag == "Player")
         {
+            //StartCoroutine(teleport());
             player_in_portal = true;
         }
+        //player.GetComponent<CharacterController>().enabled = false;
+        //player.GetComponent<CharacterController>().enabled = true;
+
     }
 
-    void OnTriggerExit(Collider other)
+    private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "player")
+        if (other.tag == "Player")
         {
             player_in_portal = false;
         }
     }
 
+
+    IEnumerator teleport()
+    {
+        player_in_portal = true;
+        yield return new WaitForSeconds(0.01f);
+        player_in_portal = false;
+    }
 }

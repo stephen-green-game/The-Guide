@@ -28,7 +28,7 @@ public class Cam_change : MonoBehaviour
         if (other.tag == "Player")
         {
             cam.clearFlags = CameraClearFlags.Skybox;
-            cam.farClipPlane = 55;
+            cam.farClipPlane = 100;
         }
     }
 

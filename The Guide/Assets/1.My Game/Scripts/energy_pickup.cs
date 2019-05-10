@@ -5,6 +5,7 @@ using UnityEngine;
 public class energy_pickup : MonoBehaviour
 {
     public GameObject particles;
+    public float vaule = 0.1f;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -20,7 +21,7 @@ public class energy_pickup : MonoBehaviour
 
     IEnumerator add_energy()
     {
-        FindObjectOfType<light_orb>().curent_energy = FindObjectOfType<light_orb>().curent_energy + 0.1f;
+        FindObjectOfType<light_orb>().curent_energy = FindObjectOfType<light_orb>().curent_energy + vaule;
 
         Destroy(particles);
 
