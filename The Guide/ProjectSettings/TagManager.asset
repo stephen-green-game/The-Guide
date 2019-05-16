@@ -12,6 +12,9 @@ TagManager:
   - plat3
   - plat
   - ring
+  - pause
+  - end_of_level
+  - Robin
   layers:
   - Default
   - TransparentFX
@@ -21,7 +24,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - UI 2
   - 
   - 
   - 

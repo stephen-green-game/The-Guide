@@ -23,13 +23,11 @@ public class text : MonoBehaviour
 
 
     IEnumerator destroy()
-    {
-        yield return new WaitForSeconds(5);
-
+    { 
         _text.SetActive(true);
 
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(7);
 
-        Destroy(gameObject);
+        Destroy(_text);
     }
 }

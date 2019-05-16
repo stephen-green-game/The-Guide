@@ -5,7 +5,7 @@ using UnityEngine;
 public class energy_pickup : MonoBehaviour
 {
     public GameObject particles;
-    public float vaule = 0.1f;
+    public int vaule = 1;
 
     private void OnTriggerEnter(Collider other)
     {

@@ -9,11 +9,10 @@ public class light_orb : MonoBehaviour
     public float shoot_force = 1000;
     public float cooldown = 1;
     public AudioSource sound;
-    public float max_energy = 0.9f;
-    public float start_energy = 0.1f;
+    public int max_energy = 10;
+    public int start_energy = 1;
 
-    public float curent_energy;
-    public Image energy_bar;
+    public int curent_energy;
 
     GameObject orb;
     float shoot_timer = 0;
@@ -33,12 +32,11 @@ public class light_orb : MonoBehaviour
             spawn_new_ball();
             //reset cooldown
             shoot_timer = 0;
-
+            curent_energy = curent_energy - 1;
         }
 
         shoot_timer += Time.deltaTime;
 
-        energy_bar.fillAmount = curent_energy;
 
         if (curent_energy > max_energy)
         {
@@ -50,15 +48,13 @@ public class light_orb : MonoBehaviour
     void spawn_new_ball()
     {
         //creates object
+        sound.Play();
         orb = GameObject.Instantiate(light_orbs as GameObject);
         //
         orb.transform.position = transform.position;
         Rigidbody my_rb = orb.GetComponent<Rigidbody>();
         my_rb.AddForce(transform.forward * shoot_force, ForceMode.Force);
 
-        energy_bar.fillAmount = curent_energy - 0.1f;
-        curent_energy = curent_energy - 0.1f;
-        sound.Play();
 
     }
 
